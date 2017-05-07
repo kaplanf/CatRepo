@@ -26,6 +26,14 @@
             android:text="kitty cat"
             android:textSize="18sp" />
 
+        <TextView
+            android:id="@+id/cat_caption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="kitty caption"
+            android:textSize="15sp" />
+
         <!--cat_caption-->
 
     </LinearLayout>

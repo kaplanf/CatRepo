@@ -10,7 +10,6 @@ import retrofit.android.MainThreadExecutor
 import retrofit.client.OkClient
 import retrofit.converter.GsonConverter
 import retrofit.http.GET
-import java.net.CookieManager
 import java.util.*
 import java.util.concurrent.ArrayBlockingQueue
 import java.util.concurrent.ThreadPoolExecutor

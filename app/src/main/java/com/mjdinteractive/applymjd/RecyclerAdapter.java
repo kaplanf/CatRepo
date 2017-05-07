@@ -17,6 +17,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     private Cat[] mCats;
     private Context mContext;
 
+
     public RecyclerAdapter(Context context, CatList cats) {
         mCats = cats.getCats();
         mContext = context;
@@ -24,11 +25,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView catName;
+        TextView catCaption;
+        ImageView catImage;
 
 
         ViewHolder(View itemView) {
             super(itemView);
             catName = (TextView) itemView.findViewById(R.id.cat_name);
+            catCaption = (TextView) itemView.findViewById(R.id.cat_caption);
+            catImage = (ImageView) itemView.findViewById(R.id.cat_image);
             //attach captions and photos here
 
         }
@@ -48,10 +53,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(RecyclerAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(final RecyclerAdapter.ViewHolder viewHolder, int position) {
         Cat kitten = mCats[position];
 
         viewHolder.catName.setText(kitten.getName());
+        viewHolder.catCaption.setText(kitten.getCaption());
+        viewHolder.catImage.setImageBitmap(null);
+
+        Picasso.with(getContext()).load(kitten.getImage()).into(viewHolder.catImage);
 
         //bind captions and photos here
 
@@ -61,5 +70,4 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public int getItemCount() {
         return mCats.length;
     }
-
 }

@@ -1,9 +1,11 @@
 package com.mjdinteractive.applymjd
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.widget.Toast
 import com.mjdinteractive.applymjd.api.ApiClient
 import com.mjdinteractive.applymjd.api.CatApi
 import com.mjdinteractive.applymjd.api.CatList
@@ -24,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         mRecyclerView = findViewById(R.id.cat_view) as RecyclerView
         mRecyclerView.layoutManager = LinearLayoutManager(this)
+        getCatData()
 
         //load cat data here
 
@@ -37,8 +40,13 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun failure(error: RetrofitError) {
+                error.printStackTrace()
+                toast("Server error encountered, please check your connectivity")
                 //handle failed API callback
             }
         })
     }
+
+    fun Context.toast(message: CharSequence) =
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show()
 }
