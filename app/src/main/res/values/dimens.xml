@@ -1,0 +1,5 @@
+<resources>
+    <!-- Default margins -->
+    <dimen name="row_height">100dp</dimen>
+    <dimen name="photo_width">140dp</dimen>
+</resources>
